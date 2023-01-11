@@ -47,4 +47,5 @@ python train.py --frame 120 --data_path data/transition/ --model_dir model_data/
 * `model` can be {`BiLSTM, Attention, Attention_BiLSTM, Attention_trainable, Attention_Sinusoida, Attention_0_1`}, corresponding to different models
 
 ## Model Evaluation
-After the training finished, run
+After the training finished, run:
+python test.py -frame 120 --data_path data/transition/ --model_dir model_data/transition/ --model Attention_0_1 --transition_detection True --activity_recognition True
