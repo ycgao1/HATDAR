@@ -48,4 +48,9 @@ python train.py --frame 120 --data_path data/transition/ --model_dir model_data/
 
 ## Model Evaluation
 After the training finished, run:
+```
 python test.py -frame 120 --data_path data/transition/ --model_dir model_data/transition/ --model Attention_0_1 --transition_detection True --activity_recognition True
+```
+* `transition_detection` is the evaluation option of activity transition detection,
+
+* `activity_recognition` is the activity recognition confusion matrix option
