@@ -3,7 +3,9 @@
 Hunan activity transition detection and activity recognition by analyzing the inner correlation of mmWave radar data fragments.
 
 - Pocess:
+
         - Detect the transition from one activity to another in a stream of mmWave sensor data of various human activities by analyzing the inner correlation of mmWave radar data fragments.
+        
         - Recognizes the new activity type in the data once it detects an activity transition.
 
 
