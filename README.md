@@ -21,19 +21,18 @@ python voxel_generator.py --frame 120 --sliding_window 10 --data_path data/raw -
 ```
 * `frame` is the length of a radar segment, default as 120, `sliding_window` default is 10. `data_path` is the raw dataset path, `data_save` is the voxel data storage path.
 
-#### Step 2 CNN Training
+#### Step 2 Feature Extraction
+*In the dataset, each fragment is represented by 120*32*32*16 elements in the spatial domain. An adversarial effect of this data presentation is, however, the size of the whole new dataset, which results in more than 2 TB. To reduce the computation stress we have applied a feature extraction process to the data with a Covolutional Neural Network, which compresses and converts the sptial data into a feature domain.
 ```
 python CNN.py --frame 120 --voxel_path data/voxel --model_path model_data/cnn/model.h5 --learning_rate 0.001 --beta_1 0.9 --beta_2  0.999 --batch_size 15 --epochs 50
 ```
+*Train a CNN network
+python feature_extraction.py --frame 120 --voxel_path data/voxel --feature_path data/feature/ --model_path model_data/cnn/model.h5
 
-
-#### Step 1 Voxel Normalization
+#### Step 3 Voxel Normalization
 ```
 python voxel_generator.py --frame 120 --sliding_window 10 --data_path data/raw --data_save data/voxel/
 ```
 
 
-#### Step 1 Voxel Normalization
-```
-python voxel_generator.py --frame 120 --sliding_window 10 --data_path data/raw --data_save data/voxel/
-```
+
