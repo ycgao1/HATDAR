@@ -26,15 +26,15 @@ python voxel_generator.py --frame 120 --sliding_window 10 --data_path data/raw -
 ```
 python CNN.py --frame 120 --voxel_path data/voxel/ --model_path model_data/cnn/model.h5 --learning_rate 0.001 --beta_1 0.9 --beta_2  0.999 --batch_size 15 --epochs 50
 ```
-*Train a CNN network
+* CNN network for feature extraction
 ```
 python feature_extraction.py --frame 120 --voxel_path data/voxel/ --feature_path data/feature/ --model_path model_data/cnn/model.h5
 ```
-Feature extraction, 'voxel_path' is the directory containing voxel, 'model_path' is the directory of CNN model which used to extract features, and feature data is saved in `feature_path`
+* 'voxel_path' is the directory containing voxel, 'model_path' is the directory of CNN model which used to extract features, and feature data is saved in `feature_path`
 
 #### Step 3 Transition Activity dataset Development
 ```
-python voxel_generator.py --frame 120 --sliding_window 10 --data_path data/raw --data_save data/voxel/
+python TranAct.py --scope 110 --feature_path data/feature/ --transition_path data/transition/ --dataset train
 ```
 
 
