@@ -200,9 +200,9 @@ def main():
     parser.add_argument("--frame", default=120, type=int)
     parser.add_argument("--voxel_path", default='data/voxel/')
     parser.add_argument("--model_path", default='model_data/cnn/model.h5')
-    parser.add_argument("--learning_rate", default=0.001, type=int)
-    parser.add_argument("--beta_1", default=0.9, type=int)
-    parser.add_argument("--beta_2", default=0.999, type=int)
+    parser.add_argument("--learning_rate", default=0.001, type=float)
+    parser.add_argument("--beta_1", default=0.9, type=float)
+    parser.add_argument("--beta_2", default=0.999, type=float)
     parser.add_argument("--batch_size", default=15, type=int)
     parser.add_argument("--epochs", default=50, type=int)
     
