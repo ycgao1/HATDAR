@@ -24,6 +24,7 @@ from tensorflow.keras.models import load_model
 from tensorflow.keras.models import *
 from tensorflow.keras.utils import plot_model
 import matplotlib.pyplot as plt
+from data_loader import get_data_test
 from model.BiLSTM import BiLSTM
 from model.Attention import Attention
 from model.Attention_BiLSTM import Attention_BiLSTM
@@ -32,47 +33,6 @@ from model.Attention_Sinusoida import Attention_Sinusoida
 from model.Attention_0_1 import Attention_0_1
 from metrics import *
 import argparse
-
-
-def get_data(data_path):
-    test_data=[]
-    test_label=[]
-    i=0
-    data_path_test = data_path+'test/'
-    for filename in os.listdir(data_path_test):
-        Data_path = data_path_test+filename
-        print(Data_path)
-        data_load=np.load(Data_path)
-        data_n = np.array(data_load['arr_0'],dtype=np.dtype(np.float32))
-        label_n_1 = data_load['arr_1']
-        label_n_2 = data_load['arr_2']
-        label_n_3 = data_load['arr_3']
-        print(data_n.shape)
-        print(label_n_1.shape)
-        print(label_n_2.shape)
-        print(label_n_3.shape)
-        
-        if i==0:
-            test_data=data_n
-            test_label_1=label_n_1
-            test_label_2=label_n_2
-            test_label_3=label_n_3
-        else:
-            test_data = np.concatenate((test_data, data_n), axis=0)
-            test_label_1 = np.concatenate((test_label_1, label_n_1), axis=0)
-            testlabel_2 = np.concatenate((test_label_2, label_n_2), axis=0)
-            test_label_3 = np.concatenate((test_label_3, label_n_3), axis=0)
-        i+=1
-        del data_load
-        del data_n, label_n_1, label_n_2, label_n_3
-    print("test_data:",test_data.shape)
-    print("test_label_1:",test_label_1.shape)
-    print("test_label_2:",test_label_2.shape)
-    print("test_label_3:",test_label_3.shape)
-        
-    test_label=np.concatenate((test_label_1, test_label_3), axis=1)
-    
-    return test_data, test_label
         
 
 
@@ -129,7 +89,7 @@ def main():
     recognition= args.activity_recognition
     
     
-    test_data, test_label = get_data(data_path)
+    test_data, test_label = get_data_test(data_path)
      
     model_test(frame, model_name, model_path, test_data, test_label, transition, recognition)
     
