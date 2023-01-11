@@ -211,19 +211,20 @@ def main():
     parser.add_argument("--data_path", default='data/transition/')
     parser.add_argument("--model_dir", default='model_data/transition/')
     parser.add_argument("--model", choices=['BiLSTM', 'Attention', 'Attention_BiLSTM', 'Attention_trainable', 'Attention_Sinusoida', 'Attention_0_1'])
-    parser.add_argument("--learning_rate", default=0.002, type=int)
-    parser.add_argument("--beta_1", default=0.9, type=int)
-    parser.add_argument("--beta_2", default=0.9999, type=int)
+    parser.add_argument("--learning_rate", default=0.002, type=float)
+    parser.add_argument("--beta_1", default=0.9, type=float)
+    parser.add_argument("--beta_2", default=0.9999, type=float)
     parser.add_argument("--checkpoint_monitor", default='val_accuracy', choices=['val_loss', 'val_accuracy'])
     parser.add_argument("--checkpoint_mode", default='max', choices=['max', 'min'])
     parser.add_argument("--reduce_lr_monitor", default='val_loss', choices=['val_loss', 'val_accuracy'])
-    parser.add_argument("--reduce_lr_factor", default=0.2, type=int)
+    parser.add_argument("--reduce_lr_factor", default=0.2, type=float)
     parser.add_argument("--reduce_lr_patience", default=10, type=int)
     parser.add_argument("--earlystopoing_monitor", default='val_accuracy', choices=['val_loss', 'val_accuracy'])
     parser.add_argument("--earlystopoing_mode", default='max', choices=['max', 'min'])
     parser.add_argument("--earlystopoing_patience", default=30, type=int)
     parser.add_argument("--batch_size", default=25, type=int)
     parser.add_argument("--epochs", default=100, type=int)
+    parser.add_argument("--draw", default=True, type=bool)
     
     args = parser.parse_args()
     
@@ -245,14 +246,19 @@ def main():
     earlystopoing_monitor = args.earlystopoing_monitor
     earlystopoing_mode = args.earlystopoing_mode
     earlystopoing_patience = args.earlystopoing_patience
+    draw = args.draw
     
     train_data, train_label, validation_data, validation_label, test_data, test_label = get_data(data_path)
     
-    model_train(frame, model_name, lr, beta_1, beta_2, checkpoint_monitor, checkpoint_mode,
+    learning_hist = model_train(frame, model_name, lr, beta_1, beta_2, checkpoint_monitor, checkpoint_mode,
                     reduce_lr_monitor, reduce_lr_factor, reduce_lr_patience,
                     earlystopoing_monitor, earlystopoing_mode, 
                     earlystopoing_patience, batch_size, epochs, model_path, 
                     train_data, train_label, validation_data, validation_label)
+    
+    if(draw ==True):
+        draw_history(learning_hist)
+        
    
     
 if __name__ == "__main__":
