@@ -1,5 +1,7 @@
 # HATDAR
 
-**Python version**: This code is in Python3.6
+**Python version**: This code is in Python3.7
 
-**Package Requirements**: pytorch pytorch_pretrained_bert tensorboardX multiprocess pyrouge
+**Package Requirements**: TensorFlow2 numpy sklearn matplotlib
+
+The dataset is borrowed from RADHAR(https://github.com/nesl/RadHAR)
