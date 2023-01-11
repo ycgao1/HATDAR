@@ -100,14 +100,14 @@ def main():
     extract_path = 'data/extract/raw/'
     checkpoint_model_path="cnn/model.h5"
     parser = argparse.ArgumentParser()
-    parser.add_argument("--scope", default=55, type=int)
+    parser.add_argument("--scope", default=110, type=int)
     parser.add_argument("--feature_path", default='data/feature/')
     parser.add_argument("--transition_path", default='data/transition/')
     parser.add_argument("--dataset", choices=['train', 'validation', 'test'])
     
     args = parser.parse_args()
     
-    scope = args.scope
+    scope = args.scope/2
     feature_path = args.feature_path
     transition_path = args.transition_path
     dataset = args.dataset
@@ -116,10 +116,6 @@ def main():
     save_path = transition_path + str(dataset)
     
     transitionGenernation(data_path, save_path, scope)
-    
-    
-    
-    
     
     
 if __name__ == "__main__":
