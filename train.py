@@ -144,7 +144,7 @@ def main():
                     earlystopoing_patience, batch_size, epochs, model_path, 
                     train_data, train_label, validation_data, validation_label)
     
-    if(draw ==True):
+    if(draw):
         draw_history(learning_hist)
         
    
