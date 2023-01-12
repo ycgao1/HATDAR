@@ -112,7 +112,7 @@ def main():
     parser.add_argument("--earlystopoing_patience", default=30, type=int)
     parser.add_argument("--batch_size", default=25, type=int)
     parser.add_argument("--epochs", default=100, type=int)
-    parser.add_argument("--draw", default=True, type=bool)
+    parser.add_argument("--draw", default=1, type=int)
     
     args = parser.parse_args()
     
