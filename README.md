@@ -42,14 +42,14 @@ python TranAct.py --scope 110 --feature_path data/feature/ --transition_path dat
 ## Model Training
 To train the model: run:
 ```
-python train.py --frame 120 --data_path data/transition/ --model_dir model_data/transition/ --model Attention_0_1 --learning_rate 0.002 --beta_1 0.9 --beta_2 0.9999 --checkpoint_monitor val_accuracy --checkpoint_mode max --reduce_lr_monitor val_loss --reduce_lr_factor 0.2 --reduce_lr_patience 10 --earlystopoing_monitor val_accuracy --earlystopoing_mode max --earlystopoing_patience 30 --batch_size 25 --epochs 100 --draw True
+python train.py --frame 120 --data_path data/transition/ --model_dir model_data/transition/ --model Attention_0_1 --learning_rate 0.002 --beta_1 0.9 --beta_2 0.9999 --checkpoint_monitor val_accuracy --checkpoint_mode max --reduce_lr_monitor val_loss --reduce_lr_factor 0.2 --reduce_lr_patience 10 --earlystopoing_monitor val_accuracy --earlystopoing_mode max --earlystopoing_patience 30 --batch_size 25 --epochs 100 --draw 1
 ``` 
 * `model` can be {`BiLSTM, Attention, Attention_BiLSTM, Attention_trainable, Attention_Sinusoida, Attention_0_1`}, corresponding to different models
 
 ## Model Evaluation
 After the training finished, run:
 ```
-python test.py -frame 120 --data_path data/transition/ --model_dir model_data/transition/ --model Attention_0_1 --transition_detection True --activity_recognition True
+python test.py -frame 120 --data_path data/transition/ --model_dir model_data/transition/ --model Attention_0_1 --transition_detection 1 --activity_recognition 1
 ```
 * `transition_detection` is the evaluation option of activity transition detection,
 
