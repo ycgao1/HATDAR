@@ -59,11 +59,11 @@ def model_test(frame, model_name, model_path, test_data, test_label, transition,
     result=model.evaluate(test_data, test_label, verbose=2)
     print("Accuracy:", result[1])
     
-    if(transition == True):
+    if(transition):
         predict=model.predict(test_data, batch_size=200)
         transition_detection(predict, test_label)
         
-    if(recognition == True):
+    if(recognition):
         predict=model.predict(test_data, batch_size=200)
         activity_recognition_confusion_matrix(predict, test_label)
         
@@ -75,8 +75,8 @@ def main():
     parser.add_argument("--data_path", default='data/transition/')
     parser.add_argument("--model_dir", default='model_data/transition/')
     parser.add_argument("--model", choices=['BiLSTM', 'Attention', 'Attention_BiLSTM', 'Attention_trainable', 'Attention_Sinusoida', 'Attention_0_1'])
-    parser.add_argument("--transition_detection", default=True, type=bool)
-    parser.add_argument("--activity_recognition", default=True, type=bool)
+    parser.add_argument("--transition_detection", default=1, type=int)
+    parser.add_argument("--activity_recognition", default=, type=int)
     
     args = parser.parse_args()
     
